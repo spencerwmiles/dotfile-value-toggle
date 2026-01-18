@@ -1,0 +1,165 @@
+{
+  "name": "dotfile-toggle",
+  "displayName": "Dotfile Toggle",
+  "description": "Toggle boolean values in dot files (.env, .flags, etc.) with one click",
+  "license": "MIT",
+  "author": "Spencer W. Miles",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/spencerwmiles/dotfile-toggle"
+  },
+  "version": "0.0.1",
+  "publisher": "spencerwmiles",
+  "engines": {
+    "vscode": "^1.105.1"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "views": {
+      "explorer": [
+        {
+          "id": "dotfileToggle",
+          "name": "Dotfile Toggle",
+          "icon": "resources/icons/toggle.svg",
+          "contextualTitle": "Dotfile Toggle"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "dotfileToggle.toggle",
+        "title": "Toggle Value",
+        "category": "Dotfile Toggle"
+      },
+      {
+        "command": "dotfileToggle.refresh",
+        "title": "Refresh",
+        "category": "Dotfile Toggle",
+        "icon": "$(refresh)"
+      },
+      {
+        "command": "dotfileToggle.addToGitignore",
+        "title": "Add to .gitignore",
+        "category": "Dotfile Toggle"
+      },
+      {
+        "command": "dotfileToggle.showStatusBarQuickPick",
+        "title": "Show Flag Quick Pick",
+        "category": "Dotfile Toggle"
+      },
+      {
+        "command": "dotfileToggle.toggleSilent",
+        "title": "Toggle Value (Silent)",
+        "category": "Dotfile Toggle"
+      },
+      {
+        "command": "dotfileToggle.goToFile",
+        "title": "Go to File",
+        "category": "Dotfile Toggle",
+        "icon": "$(go-to-file)"
+      },
+      {
+        "command": "dotfileToggle.toggleShowOnlyToggleable",
+        "title": "Toggle Show Only Toggleable",
+        "category": "Dotfile Toggle",
+        "icon": "$(filter)"
+      }
+    ],
+    "menus": {
+      "view/title": [
+        {
+          "command": "dotfileToggle.toggleShowOnlyToggleable",
+          "when": "view == dotfileToggle",
+          "group": "navigation"
+        },
+        {
+          "command": "dotfileToggle.refresh",
+          "when": "view == dotfileToggle",
+          "group": "navigation"
+        }
+      ],
+      "view/item/context": [
+        {
+          "command": "dotfileToggle.goToFile",
+          "when": "view == dotfileToggle && viewItem == flagFile",
+          "group": "inline"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "Dotfile Toggle",
+      "properties": {
+        "dotfileToggle.filePatterns": {
+          "type": "array",
+          "default": [
+            "**/.env*",
+            "**/.flags",
+            "**/.config"
+          ],
+          "description": "Glob patterns for files to monitor for toggleable values",
+          "items": {
+            "type": "string"
+          }
+        },
+        "dotfileToggle.toggleValues": {
+          "type": "array",
+          "default": [
+            ["true", "false"],
+            ["TRUE", "FALSE"],
+            ["yes", "no"],
+            ["YES", "NO"],
+            ["1", "0"],
+            ["on", "off"],
+            ["ON", "OFF"],
+            ["enabled", "disabled"],
+            ["ENABLED", "DISABLED"],
+            ["production", "development"],
+            ["prod", "dev"]
+          ],
+          "description": "Groups of values to cycle through (2 or more values per group)",
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "minItems": 2
+          }
+        },
+        "dotfileToggle.showGitignoreWarning": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show warning when toggling values in files not listed in .gitignore"
+        },
+        "dotfileToggle.showOnlyToggleable": {
+          "type": "boolean",
+          "default": true,
+          "description": "Only show toggleable values in the sidebar"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "build": "npm run compile && npm run package",
+    "watch": "tsc -watch -p ./",
+    "lint": "eslint src --ext ts",
+    "package": "vsce package",
+    "publish": "vsce publish"
+  },
+  "devDependencies": {
+    "@types/node": "^25.0.9",
+    "@types/vscode": "^1.105.1",
+    "@typescript-eslint/eslint-plugin": "^8.53.0",
+    "@typescript-eslint/parser": "^8.53.0",
+    "@vscode/vsce": "^3.7.1",
+    "eslint": "^9.39.2",
+    "typescript": "^5.9.3"
+  }
+}
