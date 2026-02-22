@@ -39,7 +39,7 @@ export interface ParsedDotFile {
 /**
  * Configuration for the extension
  */
-export interface DotfileToggleConfig {
+export interface DotfileValueToggleConfig {
   /** Glob patterns for files to monitor */
   filePatterns: string[];
   /** Groups of values that can be cycled through (2 or more values per group) */

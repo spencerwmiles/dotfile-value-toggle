@@ -86,7 +86,7 @@ export class DecorationProvider implements vscode.Disposable {
       hoverMessage.appendMarkdown(`$(sync) **Toggleable Value**\n\n`);
       hoverMessage.appendMarkdown(`\`${entry.key}\` = \`${entry.value}\`\n\n`);
       hoverMessage.appendMarkdown(`Cycle: \`${entry.toggleValues.join('\` → \`')}\`\n\n`);
-      hoverMessage.appendMarkdown(`[$(sync~spin) Toggle to \`${nextValue}\`](command:dotfileToggle.toggle?${encodeURIComponent(JSON.stringify([document.uri, entry.line]))})`);
+      hoverMessage.appendMarkdown(`[$(sync~spin) Toggle to \`${nextValue}\`](command:dotfileValueToggle.toggle?${encodeURIComponent(JSON.stringify([document.uri, entry.line]))})`);
     } else {
       hoverMessage = new vscode.MarkdownString(undefined, true);
       hoverMessage.appendMarkdown(`\`${entry.key}\` = \`${entry.value}\`\n\n`);

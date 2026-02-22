@@ -46,7 +46,7 @@ class FlagTreeItem extends vscode.TreeItem {
       
       // Make it clickable to toggle (silent - doesn't open file)
       this.command = {
-        command: 'dotfileToggle.toggleSilent',
+        command: 'dotfileValueToggle.toggleSilent',
         title: 'Toggle Value',
         arguments: [fileUri, entry.line]
       };
@@ -59,7 +59,7 @@ class FlagTreeItem extends vscode.TreeItem {
 }
 
 /**
- * Tree data provider for the Dotfile Toggle sidebar
+ * Tree data provider for the Dotfile Value Toggle sidebar
  */
 export class SidebarProvider implements vscode.TreeDataProvider<FlagTreeItem> {
   private _onDidChangeTreeData = new vscode.EventEmitter<FlagTreeItem | undefined | null | void>();

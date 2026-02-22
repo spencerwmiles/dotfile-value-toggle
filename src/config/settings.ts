@@ -1,11 +1,11 @@
 import * as vscode from 'vscode';
-import { DotfileToggleConfig } from '../types';
+import { DotfileValueToggleConfig } from '../types';
 
 /**
  * Get the current extension configuration
  */
-export function getConfig(): DotfileToggleConfig {
-  const config = vscode.workspace.getConfiguration('dotfileToggle');
+export function getConfig(): DotfileValueToggleConfig {
+  const config = vscode.workspace.getConfiguration('dotfileValueToggle');
   
   return {
     filePatterns: config.get<string[]>('filePatterns', [
@@ -95,7 +95,7 @@ export function getNextValue(value: string, toggleValues: string[]): string {
  */
 export function onConfigChange(callback: () => void): vscode.Disposable {
   return vscode.workspace.onDidChangeConfiguration(e => {
-    if (e.affectsConfiguration('dotfileToggle')) {
+    if (e.affectsConfiguration('dotfileValueToggle')) {
       callback();
     }
   });

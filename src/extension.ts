@@ -15,7 +15,7 @@ let fileWatcherService: FileWatcherService;
 let toggleService: ToggleService;
 
 export function activate(context: vscode.ExtensionContext) {
-  console.log('Dotfile Toggle extension is now active');
+  console.log('Dotfile Value Toggle extension is now active');
 
   // Initialize services
   toggleService = new ToggleService();
@@ -28,7 +28,7 @@ export function activate(context: vscode.ExtensionContext) {
   statusBarProvider = new StatusBarProvider(fileWatcherService, toggleService);
 
   // Register the tree view
-  const treeView = vscode.window.createTreeView('dotfileToggle', {
+  const treeView = vscode.window.createTreeView('dotfileValueToggle', {
     treeDataProvider: sidebarProvider,
     showCollapseAll: true
   });
@@ -40,42 +40,42 @@ export function activate(context: vscode.ExtensionContext) {
   );
 
   // Register commands
-  const toggleCommand = vscode.commands.registerCommand('dotfileToggle.toggle', async (uri: vscode.Uri, line: number) => {
+  const toggleCommand = vscode.commands.registerCommand('dotfileValueToggle.toggle', async (uri: vscode.Uri, line: number) => {
     await toggleService.toggle(uri, line);
     sidebarProvider.refresh();
     decorationProvider.updateDecorations();
   });
 
-  const refreshCommand = vscode.commands.registerCommand('dotfileToggle.refresh', () => {
+  const refreshCommand = vscode.commands.registerCommand('dotfileValueToggle.refresh', () => {
     fileWatcherService.refresh();
     sidebarProvider.refresh();
     decorationProvider.updateDecorations();
   });
 
-  const addToGitignoreCommand = vscode.commands.registerCommand('dotfileToggle.addToGitignore', async (uri: vscode.Uri) => {
+  const addToGitignoreCommand = vscode.commands.registerCommand('dotfileValueToggle.addToGitignore', async (uri: vscode.Uri) => {
     await toggleService.addToGitignore(uri);
   });
 
-  const showStatusBarQuickPickCommand = vscode.commands.registerCommand('dotfileToggle.showStatusBarQuickPick', async () => {
+  const showStatusBarQuickPickCommand = vscode.commands.registerCommand('dotfileValueToggle.showStatusBarQuickPick', async () => {
     await statusBarProvider.showQuickPick();
     sidebarProvider.refresh();
     decorationProvider.updateDecorations();
   });
 
-  const toggleSilentCommand = vscode.commands.registerCommand('dotfileToggle.toggleSilent', async (uri: vscode.Uri, line: number) => {
+  const toggleSilentCommand = vscode.commands.registerCommand('dotfileValueToggle.toggleSilent', async (uri: vscode.Uri, line: number) => {
     await toggleService.toggleSilent(uri, line);
     sidebarProvider.refresh();
     decorationProvider.updateDecorations();
   });
 
-  const goToFileCommand = vscode.commands.registerCommand('dotfileToggle.goToFile', async (treeItem: vscode.TreeItem) => {
+  const goToFileCommand = vscode.commands.registerCommand('dotfileValueToggle.goToFile', async (treeItem: vscode.TreeItem) => {
     if (treeItem.resourceUri) {
       await vscode.window.showTextDocument(treeItem.resourceUri);
     }
   });
 
-  const toggleShowOnlyToggleableCommand = vscode.commands.registerCommand('dotfileToggle.toggleShowOnlyToggleable', async () => {
-    const config = vscode.workspace.getConfiguration('dotfileToggle');
+  const toggleShowOnlyToggleableCommand = vscode.commands.registerCommand('dotfileValueToggle.toggleShowOnlyToggleable', async () => {
+    const config = vscode.workspace.getConfiguration('dotfileValueToggle');
     const currentValue = config.get<boolean>('showOnlyToggleable', true);
     await config.update('showOnlyToggleable', !currentValue, vscode.ConfigurationTarget.Global);
     sidebarProvider.refresh();
@@ -136,5 +136,5 @@ export function activate(context: vscode.ExtensionContext) {
 }
 
 export function deactivate() {
-  console.log('Dotfile Toggle extension is now deactivated');
+  console.log('Dotfile Value Toggle extension is now deactivated');
 }

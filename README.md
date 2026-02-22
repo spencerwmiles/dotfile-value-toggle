@@ -1,4 +1,4 @@
-# Dotfile Toggle
+# Dotfile Value Toggle
 
 One-click value toggling for dot files (`.env`, `.flags`, `.config`).
 
@@ -25,19 +25,19 @@ Quoted values preserved (`"true"` → `"false"`).
 
 ```json
 {
-  "dotfileToggle.filePatterns": ["**/.env*", "**/.flags", "**/.config"],
-  "dotfileToggle.toggleValues": [
+  "dotfileValueToggle.filePatterns": ["**/.env*", "**/.flags", "**/.config"],
+  "dotfileValueToggle.toggleValues": [
     ["true", "false"],
     ["dev", "staging", "prod"]
   ],
-  "dotfileToggle.showOnlyToggleable": true,
-  "dotfileToggle.showGitignoreWarning": true
+  "dotfileValueToggle.showOnlyToggleable": true,
+  "dotfileValueToggle.showGitignoreWarning": true
 }
 ```
 
 ## Installation
 
-Search **"Dotfile Toggle"** in the VS Code Extensions marketplace.
+Search **"Dotfile Value Toggle"** in the VS Code Extensions marketplace.
 
 ## License
 

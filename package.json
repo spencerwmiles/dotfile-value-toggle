@@ -1,12 +1,12 @@
 {
-  "name": "dotfile-toggle",
-  "displayName": "Dotfile Toggle",
+  "name": "dotfile-value-toggle",
+  "displayName": "Dotfile Value Toggle",
   "description": "Toggle boolean values in dot files (.env, .flags, etc.) with one click",
   "license": "MIT",
   "author": "Spencer W. Miles",
   "repository": {
     "type": "git",
-    "url": "https://github.com/spencerwmiles/dotfile-toggle"
+    "url": "https://github.com/spencerwmiles/dotfile-value-toggle"
   },
   "version": "0.0.1",
   "publisher": "spencerwmiles",
@@ -24,78 +24,78 @@
     "views": {
       "explorer": [
         {
-          "id": "dotfileToggle",
-          "name": "Dotfile Toggle",
+          "id": "dotfileValueToggle",
+          "name": "Dotfile Value Toggle",
           "icon": "resources/icons/toggle.svg",
-          "contextualTitle": "Dotfile Toggle"
+          "contextualTitle": "Dotfile Value Toggle"
         }
       ]
     },
     "commands": [
       {
-        "command": "dotfileToggle.toggle",
+        "command": "dotfileValueToggle.toggle",
         "title": "Toggle Value",
-        "category": "Dotfile Toggle"
+        "category": "Dotfile Value Toggle"
       },
       {
-        "command": "dotfileToggle.refresh",
+        "command": "dotfileValueToggle.refresh",
         "title": "Refresh",
-        "category": "Dotfile Toggle",
+        "category": "Dotfile Value Toggle",
         "icon": "$(refresh)"
       },
       {
-        "command": "dotfileToggle.addToGitignore",
+        "command": "dotfileValueToggle.addToGitignore",
         "title": "Add to .gitignore",
-        "category": "Dotfile Toggle"
+        "category": "Dotfile Value Toggle"
       },
       {
-        "command": "dotfileToggle.showStatusBarQuickPick",
+        "command": "dotfileValueToggle.showStatusBarQuickPick",
         "title": "Show Flag Quick Pick",
-        "category": "Dotfile Toggle"
+        "category": "Dotfile Value Toggle"
       },
       {
-        "command": "dotfileToggle.toggleSilent",
+        "command": "dotfileValueToggle.toggleSilent",
         "title": "Toggle Value (Silent)",
-        "category": "Dotfile Toggle"
+        "category": "Dotfile Value Toggle"
       },
       {
-        "command": "dotfileToggle.goToFile",
+        "command": "dotfileValueToggle.goToFile",
         "title": "Go to File",
-        "category": "Dotfile Toggle",
+        "category": "Dotfile Value Toggle",
         "icon": "$(go-to-file)"
       },
       {
-        "command": "dotfileToggle.toggleShowOnlyToggleable",
+        "command": "dotfileValueToggle.toggleShowOnlyToggleable",
         "title": "Toggle Show Only Toggleable",
-        "category": "Dotfile Toggle",
+        "category": "Dotfile Value Toggle",
         "icon": "$(filter)"
       }
     ],
     "menus": {
       "view/title": [
         {
-          "command": "dotfileToggle.toggleShowOnlyToggleable",
-          "when": "view == dotfileToggle",
+          "command": "dotfileValueToggle.toggleShowOnlyToggleable",
+          "when": "view == dotfileValueToggle",
           "group": "navigation"
         },
         {
-          "command": "dotfileToggle.refresh",
-          "when": "view == dotfileToggle",
+          "command": "dotfileValueToggle.refresh",
+          "when": "view == dotfileValueToggle",
           "group": "navigation"
         }
       ],
       "view/item/context": [
         {
-          "command": "dotfileToggle.goToFile",
-          "when": "view == dotfileToggle && viewItem == flagFile",
+          "command": "dotfileValueToggle.goToFile",
+          "when": "view == dotfileValueToggle && viewItem == flagFile",
           "group": "inline"
         }
       ]
     },
     "configuration": {
-      "title": "Dotfile Toggle",
+      "title": "Dotfile Value Toggle",
       "properties": {
-        "dotfileToggle.filePatterns": {
+        "dotfileValueToggle.filePatterns": {
           "type": "array",
           "default": [
             "**/.env*",
@@ -107,7 +107,7 @@
             "type": "string"
           }
         },
-        "dotfileToggle.toggleValues": {
+        "dotfileValueToggle.toggleValues": {
           "type": "array",
           "default": [
             ["true", "false"],
@@ -131,12 +131,12 @@
             "minItems": 2
           }
         },
-        "dotfileToggle.showGitignoreWarning": {
+        "dotfileValueToggle.showGitignoreWarning": {
           "type": "boolean",
           "default": true,
           "description": "Show warning when toggling values in files not listed in .gitignore"
         },
-        "dotfileToggle.showOnlyToggleable": {
+        "dotfileValueToggle.showOnlyToggleable": {
           "type": "boolean",
           "default": true,
           "description": "Only show toggleable values in the sidebar"

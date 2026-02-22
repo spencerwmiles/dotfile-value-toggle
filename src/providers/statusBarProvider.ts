@@ -29,7 +29,7 @@ export class StatusBarProvider implements vscode.Disposable {
       100
     );
     
-    this.statusBarItem.command = 'dotfileToggle.showStatusBarQuickPick';
+    this.statusBarItem.command = 'dotfileValueToggle.showStatusBarQuickPick';
     this.statusBarItem.tooltip = 'Click to toggle flag values';
     
     // Initial update

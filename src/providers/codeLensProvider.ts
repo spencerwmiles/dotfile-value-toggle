@@ -76,7 +76,7 @@ export class CodeLensProvider implements vscode.CodeLensProvider {
 
     return new vscode.CodeLens(range, {
       title: `⟳ Toggle to "${nextValue}"`,
-      command: 'dotfileToggle.toggle',
+      command: 'dotfileValueToggle.toggle',
       arguments: [document.uri, entry.line],
       tooltip: `Toggle ${entry.key} from "${entry.value}" to "${nextValue}"`
     });
